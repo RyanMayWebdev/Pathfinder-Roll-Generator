@@ -7,26 +7,26 @@ function rollGenerator() {
     var int = parseInt(document.getElementById("Intelligence").value);
     var cha = parseInt(document.getElementById("Charisma").value);
     var con = parseInt(document.getElementById("Constitution").value);
-    var skillUsed = document.getElementById("skillUsed").value.toLowerCase();
+    var atrUsed = document.getElementById("attributeUsed").value.toLowerCase();
     var targetSuccess = parseInt(document.getElementById("targetSuccess").value);
-    var skillValue = 0;
+    var atrValue = 0;
 
 
     // checks what skill is required to be added to the roll
-    if (skillUsed.includes("dexterity")) {
-        skillValue = dex;
+    if (atrUsed.includes("dexterity")) {
+        atrValue = dex;
         console.log("dex");
-    } else if (skillUsed.includes("strength")) {
-        skillValue = strength;
+    } else if (atrUsed.includes("strength")) {
+        atrValue = strength;
         console.log("strength");
-    } else if (skillUsed.includes("intelligence")) {
-        skillValue = int;
+    } else if (atrUsed.includes("intelligence")) {
+        atrValue = int;
         console.log("int");
-    } else if (skillUsed.includes("charisma")) {
-        skillValue = cha;
+    } else if (atrUsed.includes("charisma")) {
+        atrValue = cha;
         console.log("cha");
-    } else if (skillUsed.includes("constitution")) {
-        skillValue = con;
+    } else if (atrUsed.includes("constitution")) {
+        atrValue = con;
         console.log("con");
     } else {
         alert("Invalid entry");
@@ -39,7 +39,7 @@ function rollGenerator() {
 
     ranNum = Math.floor(ranNum) + 1;
 
-    var finalRoll = ranNum + skillValue;
+    var finalRoll = ranNum + atrValue;
     // roll outcome logic statments
     if (ranNum == 20) {
         alert("Natural 20 Crit");
@@ -55,5 +55,5 @@ function rollGenerator() {
 
 
     //tell user their roll combined with their skill level, resulting in the final outcome
-    alert("Roll was: " + ranNum + " + " + skillUsed + ": " + skillValue + " = final of: " + finalRoll);
+    alert("Roll was: " + ranNum + " + " + atrUsed + ": " + atrValue + " = final of: " + finalRoll);
 }
