@@ -5,134 +5,323 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pathfinder Roll Generator</title>
-    <link href="css/styles.css" rel="stylesheet">
+    <title>Restauraunt Demo Site</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Pathfinder Roll Generator</h1>
-    <h2>If you would like to be able to roll for any situation, fill in all the below fields. If you only want to roll
-        for one situation, fill in that specific field and leave the rest blank. Good Luck!</h2>
-    <div id="initialCharacterStats">
-        <h2>Please fill in your attribute points</h2>
-        <form class="atrFormClass" id="atrForm" action="index.js">
-            <div><label for="Dexterity">Dexterity:</label> <input type="number" id="Dexterity" value="0"></div>
-            <div><label for="Strength">Strength:</label> <input type="number" id="Strength" value="0"></div>
-            <div><label for="Intelligence">Intelligence:</label> <input type="number" id="Intelligence" value="0"></div>
-            <div><label for="Charisma">Charisma:</label> <input type="number" id="Charisma" value="0"></div>
-            <div><label for="Constitution">Constitution:</label> <input type="number" id="Constitution" value="0"></div>
-            <div><label for="Wisdom">Wisdom:</label> <input type="number" id="Wisdom" value="0"></div>
-        </form>
-
-        <h2>Please enter your base attack bonus and your armour class below</h2>
-        <form id="combatForm">
-            <div><label for="bab">Base Attack Bonus</label><input type="number" id="bab" value="0"></div>
-            <div><label for="ac">Armour Class</label><input type="number" id="ac" value="0"></div>
-            <div><label for="acPenalty">Armour Pentalty</label><input type="number" id="acPenalty" value="0"></div>
-        </form>
-
-        <h2>Please enter the combined total of ranks and trained for each skill. Leave blank if you don't use this
-            skill.</h2>
-        <form class="skillFormClass" id="skillForm" action="index.js">
-            <div><label for="acrobatics">Acrobatics</label><input class="skill" type="number" id="acrobatics" value="0">
-            </div>
-            <div><label for="appraise">Appraise</label><input class="skill" type="number" id="appraise" value="0"></div>
-            <div><label for="bluff">Bluff</label><input class="skill" type="number" id="bluff" value="0"></div>
-            <div><label for="climb">Climb</label><input class="skill" type="number" id="climb" value="0"></div>
-            <div><label for="craft">Craft</label><input class="skill" type="number" id="craft" value="0"></div>
-            <div><label for="diplomacy">Diplomacy</label><input class="skill" type="number" id="diplomacy" value="0">
-            </div>
-            <div>
-                <label for="disableDevice">Disable Device</label><input class="skill" type="number" id="disableDevice"
-                    value="0">
-            </div>
-            <div><label for="disguise">Disguise</label><input class="skill" type="number" id="disguise" value="0"></div>
-            <div>
-                <label for="escapeArtist">Escape Artist</label><input class="skill" type="number" id="escapeArtist"
-                    value="0">
-            </div>
-            <div><label for="fly">Fly</label><input class="skill" type="number" id="fly" value="0"></div>
-            <div>
-                <label for="handleAnimal">Handle Animal</label><input class="skill" type="number" id="handleAnimal"
-                    value="0">
-            </div>
-            <div><label for="heal">Heal</label><input class="skill" type="number" id="heal" value="0"></div>
-            <div><label for="intimidate">Intimidate</label><input class="skill" type="number" id="intimidate" value="0">
-            </div>
-            <div><label for="knowledge">Knowledge</label><input class="skill" type="number" id="knowledge" value="0">
-            </div>
-            <div><label for="linguistics">Linguistics</label><input class="skill" type="number" id="linguistics"
-                    value="0"></div>
-            <div><label for="perception">Perception</label><input class="skill" type="number" id="perception" value="0">
-            </div>
-            <div><label for="perform">Perform</label><input class="skill" type="number" id="perform" value="0"></div>
-            <div><label for="profession">Profession</label><input class="skill" type="number" id="profession" value="0">
-            </div>
-            <div><label for="ride">Ride</label><input class="skill" type="number" id="ride" value="0"></div>
-            <div><label for="senseMotive">Sense Motive</label><input class="skill" type="number" id="senseMotive"
-                    value="0"></div>
-            <div>
-                <label for="sleightOfHand">Sleight of Hand</label><input class="skill" type="number" id="sleightOfHand"
-                    value="0">
-            </div>
-            <div><label for="spellcraft">Spellcraft</label><input class="skill" type="number" id="spellcraft" value="0">
-            </div>
-            <div><label for="stealth">Stealth</label><input class="skill" type="number" id="stealth" value="0"></div>
-            <div><label for="survival">Survival</label><input class="skill" type="number" id="survival" value="0"></div>
-            <div><label for="swim">Swim</label><input class="skill" type="number" id="swim" value="0"></div>
-            <div>
-                <label for="useMagicDevice">Use Magic Device</label><input class="skill" type="number"
-                    id="useMagicDevice" value="0">
-            </div>
-        </form>
-        <button id="submitBtn">Submit Stats</button>
-    </div>
-
-    <form id="rollSelectForm">
+    <nav>
         <div>
-            Select from the list what you are rolling for: <select id="rollFor" name="rollSelection">
-                <option value="dexterity">Dexterity</option>
-                <option value="strength">Strength</option>
-                <option value="intelligence">Intelligence</option>
-                <option value="charisma">Charisma</option>
-                <option value="constitution">Constitution</option>
-                <option value="wisdom">Wisdom</option>
-                <option value="acrobatics">Acrobatics</option>
-                <option value="appraise">Appraise</option>
-                <option value="bluff">Bluff</option>
-                <option value="climb">Climb</option>
-                <option value="craft">Craft</option>
-                <option value="diplomacy">Diplomacy</option>
-                <option value="disabledevice">Disable Device</option>
-                <option value="disguise">Disguise</option>
-                <option value="escapeartist">Escape Artist</option>
-                <option value="fly">Fly</option>
-                <option value="handleanimal">Handle Animal</option>
-                <option value="heal">Heal</option>
-                <option value="intimidate">Intimidate</option>
-                <option value="knowledge">Knowledge</option>
-                <option value="linguistics">Linguistics</option>
-                <option value="perception">Perception</option>
-                <option value="perform">Perform</option>
-                <option value="profession">Profession</option>
-                <option value="ride">Ride</option>
-                <option value="sensemotive">Sense Motive</option>
-                <option value="sleightofhand">Slight of Hand</option>
-                <option value="spellcraft">Spellcraft</option>
-                <option value="stealth">Stealth</option>
-                <option value="survival">Survival</option>
-                <option value="swim">Swim</option>
-                <option value="usemagicdevice">Use Magic Device</option>
-
-            </select>
+            <img class="logo" src="https://i.pinimg.com/originals/92/d4/aa/92d4aa80f1ec1622fc1733bf448aa5ea.png"
+                alt="Sushi logo">
         </div>
-        <div><label for="targetSuccess">Roll required for success:</label> <input type="number" id="targetSuccess"
-                value=""></div>
-    </form>
-    <button id="reset" class="hidden">Reset Character</button>
-    <button id="rollBtn">Roll!</button>
-    <script src="JavaScript/index.js"></script>
 
+        <ul class="navcontainer">
+            <li><a class="navlink" href="#home">Home</a></li>
+            <li><a class="navlink" href="#about">About Us</a></li>
+            <li><a class="navlink" href="#menu">Menu</a></li>
+            <li><a class="navlink" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="mobilemenu">
+            <span class="fas fa-bars" id="menuDrop"></span>
+            <ul class="mobiledropdown mobileMenuHide">
+                <li><a class="navlink" href="#home">Home</a></li>
+                <li><a class="navlink" href="#about">About Us</a></li>
+                <li><a class="navlink" href="#menu">Menu</a></li>
+                <li><a class="navlink" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+    </nav>
+    <div id="Main">
+        <div class="welcome" id="home">
+            <div class="welcome-box">
+                <h1 class="welcome-heading"><span class="redunderline">Ryan's Sushi</span></h1>
+                <h2 class="welcome-subheading">Sushi. Elevated.</h2>
+            </div>
+        </div>
+
+        <article class="article-container" id="menu">
+            <h2 class="section-headings"><span class="redunderline">Menu</span></h2>
+            <section class="menu-titles">
+                <ul class="menu-title-list">
+                    <li class="menuOption" id="appetizerLink">Appetizers</li>
+                    <li class="menuOption" id="entreeLink">Entrees</li>
+                    <li class="menuOption" id="rollLink">Rolls</li>
+                    <li class="menuOption" id="dessertLink">Desserts</li>
+                </ul>
+            </section>
+
+            <div class="invisible visible" id="appetizers">
+                <h2 class="selected-menu-title">Appetizers</h2>
+                <div class="menu-box">
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="invisible" id="entrees">
+                <h2 class="selected-menu-title">Entrees</h2>
+                <div class="menu-box">
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="invisible" id="rolls">
+                <h2 class="selected-menu-title">Rolls</h2>
+                <div class="menu-box">
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="invisible" id="desserts">
+                <h2 class="selected-menu-title">Desserts</h2>
+                <div class="menu-box">
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+                    <div class="menu-item">
+                        <h3 class="menu-item-heading">Menu Item</h3>
+                        <p class="menu-description">Description of the menu item <strong>$5</strong></p>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+
+        <article class="article-container">
+
+            <section class="content-container" id="location">
+                <h2 class="section-headings"><span class="redunderline">Location</span></h2>
+                <div id="map"></div>
+
+                <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7vtgKhVLoxHj5WG-HGXn02QNcpk7Yg6M&callback=initMap&libraries=&v=weekly"
+                    async></script>
+            </section>
+
+            <section id="hours">
+                <h2 class="section-headings"><span class="redunderline">Hours</span></h2>
+                <ul class="hours-list">
+                    <li>Mon: 4:00 pm - 9:00 pm</li>
+                    <li>Tue-Fri: 11:00 am - 9:00 pm</li>
+                    <li>Sat: 12:00 pm - 9:00 pm</li>
+                    <li>Sun: Closed</li>
+                </ul>
+            </section>
+
+            <section class="content-container" id="about">
+                <h2 class="section-headings"><span class="redunderline">About Us</span></h2>
+                <img class="about-img"
+                    src="https://www.justonecookbook.com/wp-content/uploads/2020/06/Dragon-Roll-0286-I-500x375.jpg"
+                    alt="dragon-roll-img">
+                <p>
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis non metus purus. Nullam in purus sed
+                    enim eleifend bibendum vitae vel massa. Nulla et aliquam massa. Ut mattis ipsum eget ipsum euismod
+                    mollis.
+                    Maecenas massa mauris, vestibulum fermentum felis id, venenatis vestibulum mauris.
+                    Praesent eleifend lectus ultrices urna ullamcorper, vel vulputate mi faucibus.
+                    Cras fermentum libero et eleifend dictum. Cras lacus nibh, eleifend ut risus quis, accumsan
+                    efficitur
+                    ex.
+                    Mauris sit amet leo vel felis scelerisque bibendum non nec elit. Sed nec fringilla lectus.
+                    Integer dignissim, dolor sed tincidunt pulvinar, erat ligula pharetra ligula, et laoreet libero
+                    dolor a
+                    elit.
+
+                    Phasellus sit amet turpis luctus, dictum orci non, consectetur nulla. Suspendisse at tortor vitae
+                    tellus
+                    vulputate imperdiet eget et ipsum. Vestibulum iaculis, augue non lacinia sodales, dolor ligula
+                    ornare
+                    tellus, a tristique ipsum diam eu lacus.
+                    Suspendisse dapibus gravida quam. Nam purus tortor, ornare id urna vel, rutrum finibus lorem.
+                    Mauris porttitor erat in tempus tincidunt. Aenean aliquet consequat sem eleifend scelerisque.
+                    Duis euismod nibh non vulputate mattis. Integer cursus condimentum dignissim. Etiam ac pulvinar
+                    lacus.
+                    Pellentesque pharetra diam sit amet erat egestas iaculis.
+                    Morbi tellus mauris, vulputate sit amet tellus et, pretium sagittis velit. Pellentesque eget sodales
+                    neque.</p>
+            </section>
+        </article>
+        <article class="contact-container" id="contact">
+            <h2 class="section-headings">Contact Us</h2>
+            <p><span class="fas fa-phone"></span> 416-123-0123</p>
+            <div class="icons-container">
+                <span class="fab fa-facebook contact-icons"></span>
+                <span class="fab fa-instagram contact-icons"></span>
+            </div>
+        </article>
+    </div>
+    <script src="JavaScript/index.js" type="text/javascript"></script>
 </body>
 
 </html>
