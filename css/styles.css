@@ -5,3 +5,50 @@
 .visible {
     display:block;
 }
+body {
+    text-align: center;
+}
+
+option {
+    padding: 5px;
+}
+
+form {
+    display: flex;
+    width: 70%;
+    margin: 50px auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: left;
+}
+
+form div {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 200px;
+}
+
+label, input {
+    padding: 5px;
+    margin: 5px;
+}
+
+input {
+    width: 30px;
+}
+
+#rollSelectForm div {
+    margin: 20px;
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    flex-wrap: wrap;
+}
+
+#rollSelectForm label {
+    margin:auto 0;
+    padding: 0;
+}
