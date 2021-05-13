@@ -9,14 +9,94 @@
 </head>
 
 <body>
-    <form id="statForm" action="index.js">
-        Dexterity: <input type="text" id="Dexterity" value=""></br>
-        Strength: <input type="text" id="Strength" value=""></br>
-        Intelligence: <input type="text" id="Intelligence" value=""></br>
-        Charisma: <input type="text" id="Charisma" value=""></br>
-        Constitution: <input type="text" id="Constitution" value=""></br>
-        Attribute required for roll: <input type="text" id="attributeUsed" value=""></br>
-        Roll required for success: <input type="text" id="targetSuccess" value=""></br>
+    <h1>Pathfinder Roll Generator</h1>
+    <h2>If you would like to be able to roll for any situation, fill in all the below fields. If you only want to roll for one situation, fill in that specific field and leave the rest blank. Good Luck!</h2>
+    <form class="atrFormClass" id="atrForm" action="index.js">
+        <h2>Please fill in your attribute points</h2>
+        Dexterity: <input type="number" id="Dexterity" value="0"></br>
+        Strength: <input type="number" id="Strength" value="0"></br>
+        Intelligence: <input type="number" id="Intelligence" value="0"></br>
+        Charisma: <input type="number" id="Charisma" value="0"></br>
+        Constitution: <input type="number" id="Constitution" value="0"></br>
+        Wisdom: <input type="number" id="Wisdom" value="0">
+    </form>
+
+    <form id="combatForm">
+        <h2>Please enter your base attack bonus and your armour class below</h2>
+        <label for="bab">Base Attack Bonus</label><input type="number" id="bab" value="0">
+        <label for="ac">Armour Class</label><input type="number" id="ac" value="0">
+        <label for="acPenalty">Armour Pentalty</label><input type="number" id="acPenalty" value="0">
+    </form>
+    <form class="skillFormClass" id="skillForm" action="index.js">
+        <h2>Please enter the combined total of ranks and trained for each skill. Leave blank if you don't use this skill.</h2>
+        <label for="acrobatics">Acrobatics</label><input class="skill" type="number" id="acrobatics" value="0">
+        <label for="appraise">Appraise</label><input class="skill" type="number" id="appraise" value="0">
+        <label for="bluff">Bluff</label><input class="skill" type="number" id="bluff" value="0">
+        <label for="climb">Climb</label><input class="skill" type="number" id="climb" value="0">
+        <label for="craft">Craft</label><input class="skill" type="number" id="craft" value="0">
+        <label for="diplomacy">Diplomacy</label><input class="skill" type="number" id="diplomacy" value="0">
+        <label for="disableDevice">Disable Device</label><input class="skill" type="number" id="disableDevice" value="0">
+        <label for="disguise">Disguise</label><input class="skill" type="number" id="disguise" value="0">
+        <label for="escapeArtist">Escape Artist</label><input class="skill" type="number" id="escapeArtist" value="0">
+        <label for="fly">Fly</label><input class="skill" type="number" id="fly" value="0">
+        <label for="handleAnimal">Handle Animal</label><input class="skill" type="number" id="handleAnimal" value="0">
+        <label for="heal">Heal</label><input class="skill" type="number" id="heal" value="0">
+        <label for="intimidate">Intimidate</label><input class="skill" type="number" id="intimidate" value="0">
+        <label for="knowledge">Knowledge</label><input class="skill" type="number" id="knowledge" value="0">
+        <label for="linguistics">Linguistics</label><input class="skill" type="number" id="linguistics" value="0">
+        <label for="perception">Perception</label><input class="skill" type="number" id="perception" value="0">
+        <label for="perform">Perform</label><input class="skill" type="number" id="perform" value="0">
+        <label for="profession">Profession</label><input class="skill" type="number" id="profession" value="0">
+        <label for="ride">Ride</label><input class="skill" type="number" id="ride" value="0">
+        <label for="senseMotive">Sense Motive</label><input class="skill" type="number" id="senseMotive" value="0">
+        <label for="sleightOfHand">Sleight of Hand</label><input class="skill" type="number" id="sleightOfHand"
+            value="0">
+        <label for="spellcraft">Spellcraft</label><input class="skill" type="number" id="spellcraft" value="0">
+        <label for="stealth">Stealth</label><input class="skill" type="number" id="stealth" value="0">
+        <label for="survival">Survival</label><input class="skill" type="number" id="survival" value="0">
+        <label for="swim">Swim</label><input class="skill" type="number" id="swim" value="0">
+        <label for="useMagicDevice">Use Magic Device</label><input class="skill" type="number" id="useMagicDevice"
+            value="0">
+    </form>
+    <button id="submitBtn">Submit Stats</button>
+
+    <form id="rollSelectForm">
+        Select from the list what you are rolling for: <select id ="rollFor" name="rollSelection">
+            <option value="dexterity">Dexterity</option>
+            <option value="strength">Strength</option>
+            <option value="intelligence">Intelligence</option>
+            <option value="charisma">Charisma</option>
+            <option value="constitution">Constitution</option>
+            <option value="wisdom">Wisdom</option>
+            <option value="acrobatics">Acrobatics</option>
+            <option value="appraise">Appraise</option>
+            <option value="bluff">Bluff</option>
+            <option value="climb">Climb</option>
+            <option value="craft">Craft</option>
+            <option value="diplomacy">Diplomacy</option>
+            <option value="disabledevice">Disable Device</option>
+            <option value="disguise">Disguise</option>
+            <option value="escapeartist">Escape Artist</option>
+            <option value="fly">Fly</option>
+            <option value="handleanimal">Handle Animal</option>
+            <option value="heal">Heal</option>
+            <option value="intimidate">Intimidate</option>
+            <option value="knowledge">Knowledge</option>
+            <option value="linguistics">Linguistics</option>
+            <option value="perception">Perception</option>
+            <option value="perform">Perform</option>
+            <option value="profession">Profession</option>
+            <option value="ride">Ride</option>
+            <option value="sensemotive">Sense Motive</option>
+            <option value="sleightofhand">Slight of Hand</option>
+            <option value="spellcraft">Spellcraft</option>
+            <option value="stealth">Stealth</option>
+            <option value="survival">Survival</option>
+            <option value="swim">Swim</option>
+            <option value="usemagicdevice">Use Magic Device</option>
+
+        </select>
+        Roll required for success: <input type="number" id="targetSuccess" value=""></br>
     </form>
     <button id="rollBtn">Roll!</button>
     <script src="JavaScript/index.js"></script>
