@@ -1,7 +1,27 @@
 document.getElementById("rollBtn").addEventListener("click", rollGenerator);
+document.getElementById("submitBtn").addEventListener("click", storeSkills);
+document.getElementById("reset").addEventListener("click", () => {
+    localStorage.clear();
+    document.getElementById("initialCharacterStats").classList.remove("hidden");
+    document.getElementById("reset").classList.remove("visible");
+    document.getElementById("reset").classList.add("hidden");
+});
+let storedData = localStorage.getItem("storedData");
 
-function rollGenerator() {
-    //get values from the form fields and assign them to their respective skill ** Change this so that all values will be stored locally and retrieved upon next visit unless user uses reset button to clear storage**
+if (storedData === "true") {
+    characterSubmit();
+}
+
+function characterSubmit() {
+    document.getElementById("initialCharacterStats").classList.add("hidden");
+    document.getElementById("reset").classList.remove("hidden");
+    document.getElementById("reset").classList.add("visible");
+}
+
+
+
+function storeSkills() {
+    let skill = document.querySelectorAll(".skill");
     let dex = Math.floor((document.getElementById("Dexterity").value - 10) / 2);
     let strength = Math.floor((document.getElementById("Strength").value - 10) / 2);
     let int = Math.floor((document.getElementById("Intelligence").value - 10) / 2);
@@ -11,18 +31,60 @@ function rollGenerator() {
     let bab = document.getElementById("bab").value;
     let ac = document.getElementById("ac").value;
     let acPenalty = document.getElementById("acPenalty").value;
-
-
-    let skill = document.querySelectorAll(".skill");
     let skillValue = [];
     for (let x = 0; x < skill.length; x++) {
         skillValue.push(parseInt(skill[x].value));
+    }
+    localStorage.setItem("dex", dex);
+    localStorage.setItem("strength", strength);
+    localStorage.setItem("int", int);
+    localStorage.setItem("cha", cha);
+    localStorage.setItem("con", con);
+    localStorage.setItem("wis", wis);
+    localStorage.setItem("acPenalty", acPenalty);
+    localStorage.setItem("skillValue", JSON.stringify(skillValue));
+    localStorage.setItem("storedData", "true");
+    characterSubmit();
+
+}
+
+function rollGenerator() {
+    //get values from the form fields and assign them to their respective skill ** Change this so that all values will be stored locally and retrieved upon next visit unless user uses reset button to clear storage**
+
+    if (storedData === "true") {
+        var dex = parseInt(localStorage.getItem("dex"));
+        var strength = parseInt(localStorage.getItem("strength"));
+        var int = parseInt(localStorage.getItem("int"));
+        var cha = parseInt(localStorage.getItem("cha"));
+        var con = parseInt(localStorage.getItem("con"));
+        var wis = parseInt(localStorage.getItem("wis"));
+        var bab = localStorage.getItem("bab");
+        var ac = localStorage.getItem("ac");
+        var acPenalty = parseInt(localStorage.getItem("acPenalty"));
+
+        // let skill = document.querySelectorAll(".skill");
+        var storedSkillValue = localStorage.getItem("skillValue");
+        var skillValue = JSON.parse(storedSkillValue);
+    } else {
+        var dex = Math.floor((document.getElementById("Dexterity").value - 10) / 2);
+        var strength = Math.floor((document.getElementById("Strength").value - 10) / 2);
+        var int = Math.floor((document.getElementById("Intelligence").value - 10) / 2);
+        var cha = Math.floor((document.getElementById("Charisma").value - 10) / 2);
+        var con = Math.floor((document.getElementById("Constitution").value - 10) / 2);
+        var wis = Math.floor((document.getElementById("Wisdom").value - 10) / 2);
+        var bab = document.getElementById("bab").value;
+        var ac = document.getElementById("ac").value;
+        var acPenalty = document.getElementById("acPenalty").value;
+        var skill = document.querySelectorAll(".skill");
+        var skillValue = [];
+        for (let x = 0; x < skill.length; x++) {
+            skillValue.push(parseInt(skill[x].value));
+        }
     }
 
     let atrUsed = document.getElementById("rollFor").value;
     let targetSuccess = document.getElementById("targetSuccess").value;
     let atrValue = 0;
-
 
     // checks what skill is required to be added to the roll. **Going to change this to either buttons or more likely a drop down menu to make things easier for the user to select because there will be a lot of options, therefore use a switch most likely**
 
