@@ -9,6 +9,8 @@ document.getElementById("reset").addEventListener("click", () => {
     document.getElementById("initialCharacterStats").classList.remove("hidden");
     document.getElementById("reset").classList.remove("visible");
     document.getElementById("reset").classList.add("hidden");
+    document.getElementById("editCharacter").classList.remove("visible");
+    document.getElementById("editCharacter").classList.add("hidden");
 });
 
 let storedData = localStorage.getItem("storedData");
