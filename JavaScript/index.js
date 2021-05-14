@@ -1,4 +1,3 @@
-
 // Event listeners on buttons
 document.getElementById("rollBtn").addEventListener("click", rollGenerator);
 document.getElementById("submitBtn").addEventListener("click", storeSkills);
@@ -14,6 +13,12 @@ document.getElementById("reset").addEventListener("click", () => {
 });
 
 let storedData = localStorage.getItem("storedData");
+let dexElement = document.getElementById("Dexterity");
+let strengthElement = document.getElementById("Strength");
+let intelElement = document.getElementById("Intelligence");
+let chaElement = document.getElementById("Charisma");
+let conElement = document.getElementById("Constitution");
+let wisElement = document.getElementById("Wisdom");
 
 //Checks for locally stored character data
 if (storedData === "true") {
@@ -30,37 +35,48 @@ function characterSubmitted() {
 }
 
 // Stores values taken from the attribute and skill forms
+myNameSpace = function () {
+    function getValues() {
+         dex = parseInt(dexElement.value);
+         strength = parseInt(strengthElement.value);
+         intel = parseInt(intelElement.value);
+         cha = parseInt(chaElement.value);
+         con = parseInt(conElement.value);
+         wis = parseInt(wisElement.value);
+         dexMod = Math.floor((dex - 10) / 2);
+         strengthMod = Math.floor((strength - 10) / 2);
+         intelMod = Math.floor((intel - 10) / 2);
+         chaMod = Math.floor((cha - 10) / 2);
+         conMod = Math.floor((con - 10) / 2);
+         wisMod = Math.floor((wis - 10) / 2);
+         bab = parseInt(document.getElementById("bab").value);
+         ac = parseInt(document.getElementById("ac").value);
+         acPenalty = parseInt(document.getElementById("acPenalty").value);
+    }
+
+    return {
+        getValues: getValues
+    }
+}();
 
 function storeSkills() {
     let skill = document.querySelectorAll(".skill");
-    let dex = parseInt(document.getElementById("Dexterity").value);
-    let strength = parseInt(document.getElementById("Strength").value);
-    let int = parseInt(document.getElementById("Intelligence").value);
-    let cha = parseInt(document.getElementById("Charisma").value);
-    let con = parseInt(document.getElementById("Constitution").value);
-    let wis = parseInt(document.getElementById("Wisdom").value);
-    let dexMod = Math.floor((dex - 10) / 2);
-    let strengthMod = Math.floor((strength - 10) / 2);
-    let intMod = Math.floor((int - 10) / 2);
-    let chaMod = Math.floor((cha - 10) / 2);
-    let conMod = Math.floor((con - 10) / 2);
-    let wisMod = Math.floor((wis - 10) / 2);
-    let bab = document.getElementById("bab").value;
-    let ac = document.getElementById("ac").value;
-    let acPenalty = document.getElementById("acPenalty").value;
+
+    myNameSpace.getValues();
+
     let skillValue = [];
     for (let x = 0; x < skill.length; x++) {
         skillValue.push(parseInt(skill[x].value));
     }
     localStorage.setItem("dex", dex);
     localStorage.setItem("strength", strength);
-    localStorage.setItem("int", int);
+    localStorage.setItem("intel", intel);
     localStorage.setItem("cha", cha);
     localStorage.setItem("con", con);
     localStorage.setItem("wis", wis);
     localStorage.setItem("dexMod", dexMod);
     localStorage.setItem("strengthMod", strengthMod);
-    localStorage.setItem("intMod", intMod);
+    localStorage.setItem("intelMod", intelMod);
     localStorage.setItem("chaMod", chaMod);
     localStorage.setItem("conMod", conMod);
     localStorage.setItem("wisMod", wisMod);
@@ -69,7 +85,9 @@ function storeSkills() {
     localStorage.setItem("acPenalty", acPenalty);
     localStorage.setItem("skillValue", JSON.stringify(skillValue));
     localStorage.setItem("storedData", "true");
+
     characterSubmitted();
+
     document.getElementById('editCharacter').classList.remove("hidden");
     document.getElementById("editCharacter").classList.add("visible");
 
@@ -77,21 +95,24 @@ function storeSkills() {
 
 // Function to retrieve values stored and assign them to their appropriate element to allow the user to edit skills for re-submission
 function editSkills() {
-    document.getElementById("Dexterity").value = localStorage.getItem("dex");
-    document.getElementById("Strength").value = localStorage.getItem("strength");
-    document.getElementById("Intelligence").value = localStorage.getItem("int");
-    document.getElementById("Charisma").value = localStorage.getItem("cha");
-    document.getElementById("Constitution").value = localStorage.getItem("con");
-    document.getElementById("Wisdom").value = localStorage.getItem("wis");
+    dexElement.value = localStorage.getItem("dex");
+    strengthElement.value = localStorage.getItem("strength");
+    intelElement.value = localStorage.getItem("intel");
+    chaElement.value = localStorage.getItem("cha");
+    conElement.value = localStorage.getItem("con");
+    wisElement.value = localStorage.getItem("wis");
     document.getElementById("bab").value = localStorage.getItem("bab");
     document.getElementById("ac").value = localStorage.getItem("ac");
     document.getElementById("acPenalty").value = localStorage.getItem("acPenalty");
     skill = document.querySelectorAll(".skill");
     storedSkillValue = localStorage.getItem("skillValue");
+
     skillValue = JSON.parse(storedSkillValue);
+
     for (let x = 0; x < skill.length; x++) {
         skill[x].value = skillValue[x];
     }
+    
     document.getElementById("initialCharacterStats").classList.remove("hidden");
     document.getElementById("reset").classList.remove("visible");
     document.getElementById("reset").classList.add("hidden");
@@ -105,7 +126,7 @@ function rollGenerator() {
     if (storedData === "true") {
         dexMod = parseInt(localStorage.getItem("dexMod"));
         strengthMod = parseInt(localStorage.getItem("strengthMod"));
-        intMod = parseInt(localStorage.getItem("intMod"));
+        intelMod = parseInt(localStorage.getItem("intelMod"));
         chaMod = parseInt(localStorage.getItem("chaMod"));
         conMod = parseInt(localStorage.getItem("conMod"));
         wisMod = parseInt(localStorage.getItem("wisMod"));
@@ -117,15 +138,7 @@ function rollGenerator() {
         var storedSkillValue = localStorage.getItem("skillValue");
         skillValue = JSON.parse(storedSkillValue);
     } else {
-        dexMod = Math.floor((document.getElementById("Dexterity").value - 10) / 2);
-        strengthMod = Math.floor((document.getElementById("Strength").value - 10) / 2);
-        intMod = Math.floor((document.getElementById("Intelligence").value - 10) / 2);
-        chaMod = Math.floor((document.getElementById("Charisma").value - 10) / 2);
-        conMod = Math.floor((document.getElementById("Constitution").value - 10) / 2);
-        wisMod = Math.floor((document.getElementById("Wisdom").value - 10) / 2);
-        bab = parseInt(document.getElementById("bab").value);
-        ac = parseInt(document.getElementById("ac").value);
-        acPenalty = parseInt(document.getElementById("acPenalty").value);
+        myNameSpace.getValues();
         skill = document.querySelectorAll(".skill");
         skillValue = [];
         for (let x = 0; x < skill.length; x++) {
@@ -152,7 +165,7 @@ function rollGenerator() {
             atrValue = skillValue[0] + dexMod - acPenalty;
             break;
         case "appraise":
-            atrValue = skillValue[1] + intMod;
+            atrValue = skillValue[1] + intelMod;
             break;
         case "bluff":
             atrValue = skillValue[2] + chaMod;
@@ -161,7 +174,7 @@ function rollGenerator() {
             atrValue = skillValue[3] + strengthMod - acPenalty;
             break;
         case "craft":
-            atrValue = skillValue[4] + intMod;
+            atrValue = skillValue[4] + intelMod;
             break;
         case "diplomacy":
             atrValue = skillValue[5] + chaMod;
@@ -188,10 +201,10 @@ function rollGenerator() {
             atrValue = skillValue[12] + chaMod;
             break;
         case "knowledge":
-            atrValue = skillValue[13] + intMod;
+            atrValue = skillValue[13] + intelMod;
             break;
         case "linguistics":
-            atrValue = skillValue[14] + intMod;
+            atrValue = skillValue[14] + intelMod;
             break;
         case "perception":
             atrValue = skillValue[15] + wisMod;
@@ -212,7 +225,7 @@ function rollGenerator() {
             atrValue = skillValue[20] + dexMod;
             break;
         case "spellcraft":
-            atrValue = skillValue[21] + intMod;
+            atrValue = skillValue[21] + intelMod;
             break;
 
         case "stealth":
