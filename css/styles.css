@@ -70,8 +70,8 @@ input {
 .mainHeader {
     background-color: #91091e;
     box-shadow: 0 0 10px black;
-    height:75px;
-    padding-top: 25px;
+    height:fit-content;
+    padding: 25px 0;
     margin: auto;
     width: 100vw;
 }
