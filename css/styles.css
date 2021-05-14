@@ -2,6 +2,8 @@
 
 body {
     background-image:url(https://wallpaperaccess.com/full/2796640.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     font-family: 'MedievalSharp', cursive;
     font-weight: 400;
     margin: 0px;
@@ -80,7 +82,7 @@ input {
 }
 
 .visible {
-    display:block;
+    display:inline-block;
 }
 
 #rollSelectForm div {
