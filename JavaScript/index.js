@@ -2,9 +2,16 @@
 document.getElementById("rollBtn").addEventListener("click", rollGenerator);
 document.getElementById("submitBtn").addEventListener("click", storeSkills);
 document.getElementById("editCharacter").addEventListener("click", editSkills);
+
+// Reset all fields when reset button is clicked
 document.getElementById("reset").addEventListener("click", () => {
     localStorage.clear();
     storedData = "false"
+
+    let inputFields = document.querySelectorAll("input");
+    for (let x = 0; x < inputFields.length; x++) {
+        inputFields[x].value = 0;
+    }
     document.getElementById("initialCharacterStats").classList.remove("hidden");
     document.getElementById("reset").classList.remove("visible");
     document.getElementById("reset").classList.add("hidden");
@@ -12,6 +19,7 @@ document.getElementById("reset").addEventListener("click", () => {
     document.getElementById("editCharacter").classList.add("hidden");
 });
 
+// Global variables for retrieving attribute elements
 let storedData = localStorage.getItem("storedData");
 let dexElement = document.getElementById("Dexterity");
 let strengthElement = document.getElementById("Strength");
@@ -37,21 +45,26 @@ function characterSubmitted() {
 // Stores values taken from the attribute and skill forms
 myNameSpace = function () {
     function getValues() {
-         dex = parseInt(dexElement.value);
-         strength = parseInt(strengthElement.value);
-         intel = parseInt(intelElement.value);
-         cha = parseInt(chaElement.value);
-         con = parseInt(conElement.value);
-         wis = parseInt(wisElement.value);
-         dexMod = Math.floor((dex - 10) / 2);
-         strengthMod = Math.floor((strength - 10) / 2);
-         intelMod = Math.floor((intel - 10) / 2);
-         chaMod = Math.floor((cha - 10) / 2);
-         conMod = Math.floor((con - 10) / 2);
-         wisMod = Math.floor((wis - 10) / 2);
-         bab = parseInt(document.getElementById("bab").value);
-         ac = parseInt(document.getElementById("ac").value);
-         acPenalty = parseInt(document.getElementById("acPenalty").value);
+        dex = parseInt(dexElement.value);
+        strength = parseInt(strengthElement.value);
+        intel = parseInt(intelElement.value);
+        cha = parseInt(chaElement.value);
+        con = parseInt(conElement.value);
+        wis = parseInt(wisElement.value);
+        dexMod = Math.floor((dex - 10) / 2);
+        strengthMod = Math.floor((strength - 10) / 2);
+        intelMod = Math.floor((intel - 10) / 2);
+        chaMod = Math.floor((cha - 10) / 2);
+        conMod = Math.floor((con - 10) / 2);
+        wisMod = Math.floor((wis - 10) / 2);
+        bab = parseInt(document.getElementById("bab").value);
+        ac = parseInt(document.getElementById("ac").value);
+        acPenalty = parseInt(document.getElementById("acPenalty").value);
+        skill = document.querySelectorAll(".skill");
+        skillValue = [];
+        for (let x = 0; x < skill.length; x++) {
+            skillValue.push(parseInt(skill[x].value));
+        }
     }
 
     return {
@@ -59,15 +72,10 @@ myNameSpace = function () {
     }
 }();
 
+
+//Stores entered stats into localStorage for future use
 function storeSkills() {
-    let skill = document.querySelectorAll(".skill");
-
     myNameSpace.getValues();
-
-    let skillValue = [];
-    for (let x = 0; x < skill.length; x++) {
-        skillValue.push(parseInt(skill[x].value));
-    }
     localStorage.setItem("dex", dex);
     localStorage.setItem("strength", strength);
     localStorage.setItem("intel", intel);
@@ -106,13 +114,12 @@ function editSkills() {
     document.getElementById("acPenalty").value = localStorage.getItem("acPenalty");
     skill = document.querySelectorAll(".skill");
     storedSkillValue = localStorage.getItem("skillValue");
-
     skillValue = JSON.parse(storedSkillValue);
 
     for (let x = 0; x < skill.length; x++) {
         skill[x].value = skillValue[x];
     }
-    
+
     document.getElementById("initialCharacterStats").classList.remove("hidden");
     document.getElementById("reset").classList.remove("visible");
     document.getElementById("reset").classList.add("hidden");
@@ -139,11 +146,6 @@ function rollGenerator() {
         skillValue = JSON.parse(storedSkillValue);
     } else {
         myNameSpace.getValues();
-        skill = document.querySelectorAll(".skill");
-        skillValue = [];
-        for (let x = 0; x < skill.length; x++) {
-            skillValue.push(parseInt(skill[x].value));
-        }
     }
 
     let atrUsed = document.getElementById("rollFor").value;

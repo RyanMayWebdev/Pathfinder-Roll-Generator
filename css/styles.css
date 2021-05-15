@@ -23,18 +23,6 @@ button {
     padding: 15px;
 }
 
-button:hover {
-    opacity:0.7;
-}
-
-h1,h2,h3,h4,h5,h6{
-    font-family: 'Goblin One', cursive;
-}
-
-option, select {
-    font-family: 'MedievalSharp', cursive;
-    font-size: 1.5rem;
-}
 
 form {
     display: flex;
@@ -54,13 +42,27 @@ form div {
     width: 250px;
 }
 
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Goblin One', cursive;
+}
+
+input {
+    width: 35px;
+}
+
 label, input {
     padding: 5px;
     margin: 5px;
 }
 
-input {
-    width: 35px;
+
+option, select {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.5rem;
+}
+
+.buttonPressed {
+    opacity:0.7;
 }
 
 .hidden {
@@ -73,7 +75,7 @@ input {
     height:fit-content;
     padding: 25px 0;
     margin: auto;
-    width: 100vw;
+    width: 100%;
 }
 
 .mainSubHeader {
