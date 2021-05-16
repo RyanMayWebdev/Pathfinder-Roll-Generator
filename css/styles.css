@@ -8,8 +8,8 @@ body {
     font-weight: 400;
     margin: 0px;
     -webkit-text-stroke-color: #5c020f;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-fill-color: #f4c983;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-fill-color: #ffb237;
     text-align: center;
 }
 
@@ -46,19 +46,24 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Goblin One', cursive;
 }
 
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    padding: 75px 25px 25px;
+}
+
 input {
     width: 35px;
 }
 
-label, input {
+label, input, option, select  {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1.8rem;
     padding: 5px;
     margin: 5px;
-}
-
-
-option, select {
-    font-family: 'MedievalSharp', cursive;
-    font-size: 1.5rem;
 }
 
 .buttonPressed {
@@ -87,6 +92,10 @@ option, select {
     display:inline-block;
 }
 
+#initialCharacterStats {
+    padding: 150px, 25px;
+}
+
 #rollSelectForm div {
     margin: 20px;
     width: 350px;
@@ -99,4 +108,15 @@ option, select {
 #rollSelectForm label {
     margin:auto 0;
     padding: 0;
+}
+
+@media (max-width:424px){
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+    
 }
