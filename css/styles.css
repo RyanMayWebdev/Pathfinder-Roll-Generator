@@ -7,12 +7,20 @@ body {
     font-family: 'MedievalSharp', cursive;
     font-weight: 400;
     margin: 0px;
+    scroll-behavior: smooth;
     -webkit-text-stroke-color: #5c020f;
     -webkit-text-stroke-width: 1.5px;
     -webkit-text-fill-color: #ffb237;
     text-align: center;
+    text-decoration: none;
 }
 
+a , a:visited {
+    -webkit-text-stroke-color: #5c020f;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-fill-color: #ffb237;
+    text-decoration: none;
+}
 button {
     background-image: linear-gradient(45deg, #5c020f, #91091e, #5c020f);
     box-shadow: 2px 2px 10px black;
@@ -101,7 +109,7 @@ label, input, option, select  {
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 200px;
+    height: 250px;
     margin: 20px 0;
     width: 375px;
 }

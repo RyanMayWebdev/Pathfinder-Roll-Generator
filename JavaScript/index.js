@@ -53,6 +53,7 @@ function characterSubmitted() {
     document.getElementById("initialCharacterStats").classList.toggle("hidden");
     document.getElementById("reset").classList.toggle("hidden");
     document.getElementById("editCharacter").classList.toggle("hidden");
+    document.getElementById("rollOutcome").textContent = "";
 }
 
 // Stores values taken from the attribute and skill forms
@@ -185,7 +186,7 @@ function rollGenerator() {
     let diceRoll = [];
     let ranNum = 0;
     let finalRoll = 0;
-
+    let outcome = document.getElementById("rollOutcome");
     // Randomizes dice rolls * the number of rolls required using the number of dice sides
     for (let x = 0; x < numberOfDice; x++) {
         ranNum = Math.floor( (Math.random() * diceSides )+ 1);
@@ -193,17 +194,14 @@ function rollGenerator() {
         finalRoll = finalRoll + diceRoll[x];
     }
     finalRoll += atrValue[atrUsed];
-
     // roll outcome logic statments
     if (atrUsed === "damageDex" || atrUsed === "damageStr") {
-        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+        outcome.textContent = `Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`;
     } else if (ranNum == 20){
-        alert("Natural 20 crit!");
-        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+        outcome.textContent = `Natural 20 crit! Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`;
     }else if (ranNum === 1){
-        alert("Critical failure!");
-        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+        outcome.textContent = `Critical Failure! Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`;
     }else{
-        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+        outcome.textContent = `Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`;
     }
 }
