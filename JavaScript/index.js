@@ -155,7 +155,7 @@ function rollGenerator() {
         acPenalty = parseInt(localStorage.getItem("acPenalty"));
 
         // let skill = document.querySelectorAll(".skill");
-        var storedSkillValue = localStorage.getItem("skillValue");
+        let storedSkillValue = localStorage.getItem("skillValue");
         skillValue = JSON.parse(storedSkillValue);
     } else {
         getValues();
