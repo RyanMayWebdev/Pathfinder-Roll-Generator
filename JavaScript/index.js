@@ -141,10 +141,7 @@ function rollGenerator() {
     } else {
         getValues();
     }
-
     let atrUsed = document.getElementById("rollFor").value;
-    let targetSuccess = document.getElementById("targetSuccess").value;
-
     // checks what skill is required to be added to the roll using object that contains all potential rollFor values
     const atrValue = {
         attackDex: dexMod + bab,
@@ -191,27 +188,22 @@ function rollGenerator() {
 
     // Randomizes dice rolls * the number of rolls required using the number of dice sides
     for (let x = 0; x < numberOfDice; x++) {
-        ranNum = Math.random();
-        ranNum = ranNum * diceSides;
-        ranNum = Math.floor(ranNum) + 1;
+        ranNum = Math.floor( (Math.random() * diceSides )+ 1);
         diceRoll.push(ranNum)
         finalRoll = finalRoll + diceRoll[x];
     }
     finalRoll += atrValue[atrUsed];
 
     // roll outcome logic statments
-    if (atrUsed != "damageDex" || atrUsed != "damageStr" && ranNum === 20) {
-        alert("Natural 20 Crit");
-    } else if (atrUsed != "damageDex" || atrUsed != "damageStr" && ranNum == 1) {
+    if (atrUsed === "damageDex" || atrUsed === "damageStr") {
+        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+    } else if (ranNum == 20){
+        alert("Natural 20 crit!");
+        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+    }else if (ranNum === 1){
         alert("Critical failure!");
-    } else if (ranNum >= 2 && finalRoll >= targetSuccess) {
-
-        alert("Success!");
-
-    } else {
-        alert("Failure!");
+        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+    }else{
+        alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
     }
-    //tell user their roll combined with their skill level, resulting in the final outcome ** Change this so the outcome appears on the webpage instead of an alert window.**
-
-    alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
 }
