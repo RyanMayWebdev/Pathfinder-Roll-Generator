@@ -1,3 +1,30 @@
+// Global variables
+let dex = 0;
+let strength = 0;
+let intel = 0;
+let cha = 0;
+let con = 0;
+let wis = 0;
+let dexMod = 0;
+let strengthMod = 0;
+let intelMod = 0;
+let chaMod = 0;
+let conMod = 0;
+let wisMod = 0;
+let bab = 0;
+let ac = 0;
+let acPenalty = 0;
+let skill = 0;
+let skillValue = [];
+const storedData = localStorage.getItem("storedData");
+const dexElement = document.getElementById("Dexterity");
+const strengthElement = document.getElementById("Strength");
+const intelElement = document.getElementById("Intelligence");
+const chaElement = document.getElementById("Charisma");
+const conElement = document.getElementById("Constitution");
+const wisElement = document.getElementById("Wisdom");
+
+
 // Event listeners on buttons
 document.getElementById("rollBtn").addEventListener("click", rollGenerator);
 document.getElementById("submitBtn").addEventListener("click", storeSkills);
@@ -19,15 +46,6 @@ document.getElementById("reset").addEventListener("click", () => {
     document.getElementById("editCharacter").classList.add("hidden");
 });
 
-// Global variables for retrieving attribute elements
-const storedData = localStorage.getItem("storedData");
-const dexElement = document.getElementById("Dexterity");
-const strengthElement = document.getElementById("Strength");
-const intelElement = document.getElementById("Intelligence");
-const chaElement = document.getElementById("Charisma");
-const conElement = document.getElementById("Constitution");
-const wisElement = document.getElementById("Wisdom");
-
 //Checks for locally stored character data
 if (storedData === "true") {
     characterSubmitted();
@@ -43,7 +61,6 @@ function characterSubmitted() {
 }
 
 // Stores values taken from the attribute and skill forms
-myNameSpace = function () {
     function getValues() {
         dex = parseInt(dexElement.value);
         strength = parseInt(strengthElement.value);
@@ -67,15 +84,11 @@ myNameSpace = function () {
         }
     }
 
-    return {
-        getValues: getValues
-    }
-}();
 
 
 //Stores entered stats into localStorage for future use
 function storeSkills() {
-    myNameSpace.getValues();
+    getValues();
     localStorage.setItem("dex", dex);
     localStorage.setItem("strength", strength);
     localStorage.setItem("intel", intel);
@@ -145,7 +158,7 @@ function rollGenerator() {
         var storedSkillValue = localStorage.getItem("skillValue");
         skillValue = JSON.parse(storedSkillValue);
     } else {
-        myNameSpace.getValues();
+        getValues();
     }
 
     let atrUsed = document.getElementById("rollFor").value;
