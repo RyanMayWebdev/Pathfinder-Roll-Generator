@@ -71,9 +71,6 @@ label, input, option, select  {
     opacity:0.7;
 }
 
-.hidden {
-    display:none;
-}
 
 .mainHeader {
     background-color: #91091e;
@@ -92,7 +89,9 @@ label, input, option, select  {
 .visible {
     display:inline-block;
 }
-
+.hidden {
+    display:none;
+}
 #initialCharacterStats {
     padding: 150px, 25px;
 }

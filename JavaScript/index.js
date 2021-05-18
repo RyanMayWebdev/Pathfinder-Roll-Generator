@@ -39,11 +39,8 @@ document.getElementById("reset").addEventListener("click", () => {
     for (let x = 0; x < inputFields.length; x++) {
         inputFields[x].value = 0;
     }
-    document.getElementById("initialCharacterStats").classList.remove("hidden");
-    document.getElementById("reset").classList.remove("visible");
-    document.getElementById("reset").classList.add("hidden");
-    document.getElementById("editCharacter").classList.remove("visible");
-    document.getElementById("editCharacter").classList.add("hidden");
+    characterSubmitted();
+
 });
 
 //Checks for locally stored character data
@@ -53,38 +50,34 @@ if (storedData === "true") {
 
 // Hides the character sheet and presents the reset button if character data is in localStorage
 function characterSubmitted() {
-    document.getElementById("initialCharacterStats").classList.add("hidden");
-    document.getElementById("reset").classList.remove("hidden");
-    document.getElementById("reset").classList.add("visible");
-    document.getElementById('editCharacter').classList.remove("hidden");
-    document.getElementById("editCharacter").classList.add("visible");
+    document.getElementById("initialCharacterStats").classList.toggle("hidden");
+    document.getElementById("reset").classList.toggle("hidden");
+    document.getElementById("editCharacter").classList.toggle("hidden");
 }
 
 // Stores values taken from the attribute and skill forms
-    function getValues() {
-        dex = parseInt(dexElement.value);
-        strength = parseInt(strengthElement.value);
-        intel = parseInt(intelElement.value);
-        cha = parseInt(chaElement.value);
-        con = parseInt(conElement.value);
-        wis = parseInt(wisElement.value);
-        dexMod = Math.floor((dex - 10) / 2);
-        strengthMod = Math.floor((strength - 10) / 2);
-        intelMod = Math.floor((intel - 10) / 2);
-        chaMod = Math.floor((cha - 10) / 2);
-        conMod = Math.floor((con - 10) / 2);
-        wisMod = Math.floor((wis - 10) / 2);
-        bab = parseInt(document.getElementById("bab").value);
-        ac = parseInt(document.getElementById("ac").value);
-        acPenalty = parseInt(document.getElementById("acPenalty").value);
-        skill = document.querySelectorAll(".skill");
-        skillValue = [];
-        for (let x = 0; x < skill.length; x++) {
-            skillValue.push(parseInt(skill[x].value));
-        }
+function getValues() {
+    dex = parseInt(dexElement.value);
+    strength = parseInt(strengthElement.value);
+    intel = parseInt(intelElement.value);
+    cha = parseInt(chaElement.value);
+    con = parseInt(conElement.value);
+    wis = parseInt(wisElement.value);
+    dexMod = Math.floor((dex - 10) / 2);
+    strengthMod = Math.floor((strength - 10) / 2);
+    intelMod = Math.floor((intel - 10) / 2);
+    chaMod = Math.floor((cha - 10) / 2);
+    conMod = Math.floor((con - 10) / 2);
+    wisMod = Math.floor((wis - 10) / 2);
+    bab = parseInt(document.getElementById("bab").value);
+    ac = parseInt(document.getElementById("ac").value);
+    acPenalty = parseInt(document.getElementById("acPenalty").value);
+    skill = document.querySelectorAll(".skill");
+    skillValue = [];
+    for (let x = 0; x < skill.length; x++) {
+        skillValue.push(parseInt(skill[x].value));
     }
-
-
+}
 
 //Stores entered stats into localStorage for future use
 function storeSkills() {
@@ -108,10 +101,6 @@ function storeSkills() {
     localStorage.setItem("storedData", "true");
 
     characterSubmitted();
-
-    document.getElementById('editCharacter').classList.remove("hidden");
-    document.getElementById("editCharacter").classList.add("visible");
-
 }
 
 // Function to retrieve values stored and assign them to their appropriate element to allow the user to edit skills for re-submission
@@ -132,11 +121,7 @@ function editSkills() {
         skill[x].value = skillValue[x];
     }
 
-    document.getElementById("initialCharacterStats").classList.remove("hidden");
-    document.getElementById("reset").classList.remove("visible");
-    document.getElementById("reset").classList.add("hidden");
-    document.getElementById('editCharacter').classList.remove("visible");
-    document.getElementById("editCharacter").classList.add("hidden");
+    characterSubmitted();
 }
 
 function rollGenerator() {
@@ -152,8 +137,6 @@ function rollGenerator() {
         bab = parseInt(localStorage.getItem("bab"));
         ac = parseInt(localStorage.getItem("ac"));
         acPenalty = parseInt(localStorage.getItem("acPenalty"));
-
-        // let skill = document.querySelectorAll(".skill");
         skillValue = JSON.parse(localStorage.getItem("skillValue"));
     } else {
         getValues();
@@ -197,7 +180,6 @@ function rollGenerator() {
 
     }
 
-
     // parse ints from the diceroll id. need to check for number up until d and assign to numberofdice var, numbers after d are assigned to dicesides var.
     let userDiceInput = document.getElementById("diceRoll").value;
     let d = userDiceInput.indexOf('d' || 'D');
@@ -232,5 +214,4 @@ function rollGenerator() {
     //tell user their roll combined with their skill level, resulting in the final outcome ** Change this so the outcome appears on the webpage instead of an alert window.**
 
     alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
-
 }
