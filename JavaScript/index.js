@@ -20,13 +20,13 @@ document.getElementById("reset").addEventListener("click", () => {
 });
 
 // Global variables for retrieving attribute elements
-let storedData = localStorage.getItem("storedData");
-let dexElement = document.getElementById("Dexterity");
-let strengthElement = document.getElementById("Strength");
-let intelElement = document.getElementById("Intelligence");
-let chaElement = document.getElementById("Charisma");
-let conElement = document.getElementById("Constitution");
-let wisElement = document.getElementById("Wisdom");
+const storedData = localStorage.getItem("storedData");
+const dexElement = document.getElementById("Dexterity");
+const strengthElement = document.getElementById("Strength");
+const intelElement = document.getElementById("Intelligence");
+const chaElement = document.getElementById("Charisma");
+const conElement = document.getElementById("Constitution");
+const wisElement = document.getElementById("Wisdom");
 
 //Checks for locally stored character data
 if (storedData === "true") {
@@ -150,113 +150,66 @@ function rollGenerator() {
 
     let atrUsed = document.getElementById("rollFor").value;
     let targetSuccess = document.getElementById("targetSuccess").value;
-    let atrValue = 0;
-    let diceSides = 20;
 
-    // checks what skill is required to be added to the roll. 
+    // checks what skill is required to be added to the roll using object that contains all potential rollFor values
+    const atrValue = {
+        attackDex: dexMod + bab,
+        attackStr: strengthMod + bab,
+        damageDex: dexMod,
+        damageStr: strengthMod,
+        acrobatics: skillValue[0] + dexMod - acPenalty,
+        appraise: skillValue[1] + intelMod,
+        bluff: skillValue[2] + chaMod,
+        climb: skillValue[3] + strengthMod - acPenalty,
+        craft: skillValue[4] + intelMod,
+        diplomacy: skillValue[5] + chaMod,
+        disabledevice: skillValue[6] + dexMod,
+        disguise: skillValue[7] + chaMod,
+        escapeartist: skillValue[8] + dexMod - acPenalty,
+        fly: skillValue[9] + dexMod - acPenalty,
+        handleanimal: skillValue[10] + chaMod,
+        heal: skillValue[11] + wisMod,
+        intimidate: skillValue[12] + chaMod,
+        knowledge: skillValue[13] + intelMod,
+        linguistics: skillValue[14] + intelMod,
+        perception: skillValue[15] + wisMod,
+        perform: skillValue[16] + chaMod,
+        profession: skillValue[17] + wisMod,
+        ride: skillValue[18] + dexMod - acPenalty,
+        sensemotive: skillValue[19] + wisMod,
+        sleightofhand: skillValue[20] + dexMod,
+        spellcraft: skillValue[21] + intelMod,
+        stealth: skillValue[22] + dexMod - acPenalty,
+        survival: skillValue[23] + wisMod,
+        swim: skillValue[24] + strengthMod - acPenalty,
+        usemagicdevice: skillValue[25] + chaMod
 
-
-    switch (atrUsed) {
-        case "attackDex":
-            atrValue = dexMod + bab;
-            break;
-        case "attackStr":
-            atrValue = strengthMod + bab;
-            break;
-        case "acrobatics":
-            atrValue = skillValue[0] + dexMod - acPenalty;
-            break;
-        case "appraise":
-            atrValue = skillValue[1] + intelMod;
-            break;
-        case "bluff":
-            atrValue = skillValue[2] + chaMod;
-            break;
-        case "climb":
-            atrValue = skillValue[3] + strengthMod - acPenalty;
-            break;
-        case "craft":
-            atrValue = skillValue[4] + intelMod;
-            break;
-        case "diplomacy":
-            atrValue = skillValue[5] + chaMod;
-            break;
-        case "disabledevice":
-            atrValue = skillValue[6] + dexMod;
-            break;
-        case "disguise":
-            atrValue = skillValue[7] + chaMod;
-            break;
-        case "escapeartist":
-            atrValue = skillValue[8] + dexMod - acPenalty;
-            break;
-        case "fly":
-            atrValue = skillValue[9] + dexMod - acPenalty;
-            break;
-        case "handleanimal":
-            atrValue = skillValue[10] + chaMod;
-            break;
-        case "heal":
-            atrValue = skillValue[11] + wisMod;
-            break;
-        case "intimidate":
-            atrValue = skillValue[12] + chaMod;
-            break;
-        case "knowledge":
-            atrValue = skillValue[13] + intelMod;
-            break;
-        case "linguistics":
-            atrValue = skillValue[14] + intelMod;
-            break;
-        case "perception":
-            atrValue = skillValue[15] + wisMod;
-            break;
-        case "perform":
-            atrValue = skillValue[16] + chaMod;
-            break;
-        case "profession":
-            atrValue = skillValue[17] + wisMod;
-            break;
-        case "ride":
-            atrValue = skillValue[18] + dexMod - acPenalty;
-            break;
-        case "sensemotive":
-            atrValue = skillValue[19] + wisMod;
-            break;
-        case "sleightofhand":
-            atrValue = skillValue[20] + dexMod;
-            break;
-        case "spellcraft":
-            atrValue = skillValue[21] + intelMod;
-            break;
-
-        case "stealth":
-            atrValue = skillValue[22] + dexMod - acPenalty;
-            break;
-        case "survival":
-            atrValue = skillValue[23] + wisMod;
-            break;
-        case "swim":
-            atrValue = skillValue[24] + strengthMod - acPenalty;
-            break;
-        case "usemagicdevice":
-            atrValue = skillValue[25] + chaMod;
-            break;
-        default:
-            break;
     }
 
-    // randomizes roll from 1-20
-    let ranNum = Math.random();
-    ranNum = ranNum * diceSides;
 
-    ranNum = Math.floor(ranNum) + 1;
+    // parse ints from the diceroll id. need to check for number up until d and assign to numberofdice var, numbers after d are assigned to dicesides var.
+    let userDiceInput = document.getElementById("diceRoll").value;
+    let d = userDiceInput.indexOf('d' || 'D');
+    let numberOfDice = userDiceInput.slice(0, d);
+    let diceSides = userDiceInput.slice(d + 1);
+    let diceRoll = [];
+    let ranNum = 0;
+    let finalRoll = 0;
 
-    let finalRoll = ranNum + atrValue;
+    // Randomizes dice rolls * the number of rolls required using the number of dice sides
+    for (let x = 0; x < numberOfDice; x++) {
+        ranNum = Math.random();
+        ranNum = ranNum * diceSides;
+        ranNum = Math.floor(ranNum) + 1;
+        diceRoll.push(ranNum)
+        finalRoll = finalRoll + diceRoll[x];
+    }
+    finalRoll += atrValue[atrUsed];
+
     // roll outcome logic statments
-    if (ranNum == 20) {
+    if (atrUsed != "damageDex" || atrUsed != "damageStr" && ranNum === 20) {
         alert("Natural 20 Crit");
-    } else if (ranNum == 1) {
+    } else if (atrUsed != "damageDex" || atrUsed != "damageStr" && ranNum == 1) {
         alert("Critical failure!");
     } else if (ranNum >= 2 && finalRoll >= targetSuccess) {
 
@@ -266,5 +219,7 @@ function rollGenerator() {
         alert("Failure!");
     }
     //tell user their roll combined with their skill level, resulting in the final outcome ** Change this so the outcome appears on the webpage instead of an alert window.**
-    alert("Roll was: " + ranNum + " + " + atrUsed + ": " + atrValue + " = final of: " + finalRoll);
+
+    alert(`Roll was: ${diceRoll} + Modifier : ${atrValue[atrUsed]} = final of: ${finalRoll}`);
+
 }

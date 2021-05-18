@@ -11,7 +11,8 @@
 
 <body>
     <h1 class="mainHeader">Pathfinder Roll Generator</h1>
-    <h2 class="mainSubHeader">If you would like to be able to roll for any situation, fill in all the below fields. If you only want to roll
+    <h2 class="mainSubHeader">If you would like to be able to roll for any situation, fill in all the below fields. If
+        you only want to roll
         for one situation, fill in that specific field and leave the rest blank. Good Luck!</h2>
     <div id="initialCharacterStats">
         <h2>Please fill in your attribute points</h2>
@@ -90,9 +91,12 @@
 
     <form id="rollSelectForm">
         <div>
-            Select from the list what you are rolling for: <select id="rollFor" name="rollSelection">
+            <label for="rollFor">Select from the list what you are rolling for: </label>
+            <select id="rollFor" name="rollSelection">
                 <option value="attackDex">Attack(Dexterity)</option>
                 <option value="attackStr">Attack(Strength)</option>
+                <option value="damageDex">Damage(Dexterity)</option>
+                <option value="damageStr">Damage(Strength)</option>
                 <option value="acrobatics">Acrobatics</option>
                 <option value="appraise">Appraise</option>
                 <option value="bluff">Bluff</option>
@@ -119,11 +123,17 @@
                 <option value="survival">Survival</option>
                 <option value="swim">Swim</option>
                 <option value="usemagicdevice">Use Magic Device</option>
-
             </select>
         </div>
-        <div><label for="targetSuccess">Roll required for success:</label> <input type="number" id="targetSuccess"
-                value=""></div>
+        <div>
+            <label for="targetSuccess">Roll required for success:</label> <input type="number" id="targetSuccess"
+                value="">
+        </div>
+        <div>
+            <label for="diceRoll">Enter the dice you want to roll in the following format (2d6, 3d8, 1d4 etc.) :
+            </label>
+            <input type="text" id="diceRoll" value="">
+        </div>
     </form>
     <button id="reset" class="hidden">Reset Character</button>
     <button id="editCharacter" class="hidden">Edit Character</button>
