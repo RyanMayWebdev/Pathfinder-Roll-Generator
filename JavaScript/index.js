@@ -16,7 +16,7 @@ let ac = 0;
 let acPenalty = 0;
 let skill = 0;
 let skillValue = [];
-const storedData = localStorage.getItem("storedData");
+let storedData = localStorage.getItem("storedData");
 const dexElement = document.getElementById("Dexterity");
 const strengthElement = document.getElementById("Strength");
 const intelElement = document.getElementById("Intelligence");
@@ -126,8 +126,7 @@ function editSkills() {
     document.getElementById("ac").value = localStorage.getItem("ac");
     document.getElementById("acPenalty").value = localStorage.getItem("acPenalty");
     skill = document.querySelectorAll(".skill");
-    storedSkillValue = localStorage.getItem("skillValue");
-    skillValue = JSON.parse(storedSkillValue);
+    skillValue = JSON.parse(localStorage.getItem("skillValue"));
 
     for (let x = 0; x < skill.length; x++) {
         skill[x].value = skillValue[x];
@@ -155,8 +154,7 @@ function rollGenerator() {
         acPenalty = parseInt(localStorage.getItem("acPenalty"));
 
         // let skill = document.querySelectorAll(".skill");
-        let storedSkillValue = localStorage.getItem("skillValue");
-        skillValue = JSON.parse(storedSkillValue);
+        skillValue = JSON.parse(localStorage.getItem("skillValue"));
     } else {
         getValues();
     }
