@@ -13,6 +13,8 @@ If you wish to change the submitted stats, press the "Edit Character" button.
 If you wish to reset your submitted stats, press the "Reset Character" button.
 
 To generate a roll, select what you are rolling for from the drop down list, then enter what the required roll for success is. (I realize the DM usually keeps this to themselves, so I might change it)
-Then hit the roll button and get your result.
+Enter in the amount of dice and their type to roll. ex. 1d20, 2d6, 10d8 etc
+
+Press roll and get your outcome. Best of Luck!
 
 
