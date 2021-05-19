@@ -10,142 +10,162 @@
 </head>
 
 <body>
-    <h1 class="mainHeader">Pathfinder Roll Generator</h1>
-    <h2 class="mainSubHeader">If you would like to be able to roll for any situation, fill in all the below fields. If
-        you only want to roll
-        for one situation, fill in that specific field and leave the rest blank. Good Luck!</h2>
-    <div id="initialCharacterStats">
-        <h2>Please fill in your attribute points</h2>
-        <form class="atrFormClass" id="atrForm" action="index.js">
-            <div><label for="Dexterity">Dexterity:</label> <input type="number" id="Dexterity" value="0"></div>
-            <div><label for="Strength">Strength:</label> <input type="number" id="Strength" value="0"></div>
-            <div><label for="Intelligence">Intelligence:</label> <input type="number" id="Intelligence" value="0"></div>
-            <div><label for="Charisma">Charisma:</label> <input type="number" id="Charisma" value="0"></div>
-            <div><label for="Constitution">Constitution:</label> <input type="number" id="Constitution" value="0"></div>
-            <div><label for="Wisdom">Wisdom:</label> <input type="number" id="Wisdom" value="0"></div>
-        </form>
+    <div class="contentBackground">
+        <h1 class="mainHeader">Pathfinder Roll Generator</h1>
+        <h2 class="mainSubHeader">If you would like to be able to roll for any situation, fill in all the below fields.
+            If you only want to roll for one situation, fill in that specific field and leave the rest blank. Good Luck!
+        </h2>
+        <div id="initialCharacterStats">
+            <h2>Please fill in your attribute points</h2>
+            <form class="atrFormClass" id="atrForm" action="index.js">
+                <div><label for="Dexterity">Dexterity:</label> <input type="number" id="Dexterity" value="0"></div>
+                <div><label for="Strength">Strength:</label> <input type="number" id="Strength" value="0"></div>
+                <div><label for="Intelligence">Intelligence:</label> <input type="number" id="Intelligence" value="0">
+                </div>
+                <div><label for="Charisma">Charisma:</label> <input type="number" id="Charisma" value="0"></div>
+                <div><label for="Constitution">Constitution:</label> <input type="number" id="Constitution" value="0">
+                </div>
+                <div><label for="Wisdom">Wisdom:</label> <input type="number" id="Wisdom" value="0"></div>
+            </form>
 
-        <h2>Please enter your base attack bonus, caster level, saving throws (base+enhancement), armour penalty and your armour class below</h2>
-        <form id="combatForm">
-            <div><label for="bab">Base Attack Bonus</label><input type="number" id="bab" value="0"></div>
-            <div><label for="casterLevel">Caster Level</label><input type="number" id="casterLevel" value="0"></div>
-            <div><label for="baseSaveFort">Fortitude save</label><input type="number" id="baseSaveFort" value="0"></div>
-            <div><label for="baseSaveReflex">Reflex save</label><input type="number" id="baseSaveReflex" value="0"></div>
-            <div><label for="baseSaveWill">Will save</label><input type="number" id="baseSaveWill" value="0"></div>
-            <div><label for="ac">Armour Class</label><input type="number" id="ac" value="0"></div>
-            <div><label for="acPenalty">Armour Pentalty</label><input type="number" id="acPenalty" value="0"></div>
-        </form>
+            <h2>Please enter your base attack bonus, caster level, saving throws (base+enhancement), armour penalty and
+                your armour class below</h2>
+            <form id="combatForm">
+                <div><label for="bab">Base Attack Bonus</label><input type="number" id="bab" value="0"></div>
+                <div><label for="casterLevel">Caster Level</label><input type="number" id="casterLevel" value="0"></div>
+                <div><label for="baseSaveFort">Fortitude save</label><input type="number" id="baseSaveFort" value="0">
+                </div>
+                <div><label for="baseSaveReflex">Reflex save</label><input type="number" id="baseSaveReflex" value="0">
+                </div>
+                <div><label for="baseSaveWill">Will save</label><input type="number" id="baseSaveWill" value="0"></div>
+                <div><label for="ac">Armour Class</label><input type="number" id="ac" value="0"></div>
+                <div><label for="acPenalty">Armour Pentalty</label><input type="number" id="acPenalty" value="0"></div>
+            </form>
 
-        <h2>Please enter the combined total of ranks and trained for each skill. Leave blank if you don't use this
-            skill.</h2>
-        <form class="skillFormClass" id="skillForm" action="index.js">
-            <div><label for="acrobatics">Acrobatics</label><input class="skill" type="number" id="acrobatics" value="0">
-            </div>
-            <div><label for="appraise">Appraise</label><input class="skill" type="number" id="appraise" value="0"></div>
-            <div><label for="bluff">Bluff</label><input class="skill" type="number" id="bluff" value="0"></div>
-            <div><label for="climb">Climb</label><input class="skill" type="number" id="climb" value="0"></div>
-            <div><label for="craft">Craft</label><input class="skill" type="number" id="craft" value="0"></div>
-            <div><label for="diplomacy">Diplomacy</label><input class="skill" type="number" id="diplomacy" value="0">
-            </div>
-            <div>
-                <label for="disableDevice">Disable Device</label><input class="skill" type="number" id="disableDevice"
-                    value="0">
-            </div>
-            <div><label for="disguise">Disguise</label><input class="skill" type="number" id="disguise" value="0"></div>
-            <div>
-                <label for="escapeArtist">Escape Artist</label><input class="skill" type="number" id="escapeArtist"
-                    value="0">
-            </div>
-            <div><label for="fly">Fly</label><input class="skill" type="number" id="fly" value="0"></div>
-            <div>
-                <label for="handleAnimal">Handle Animal</label><input class="skill" type="number" id="handleAnimal"
-                    value="0">
-            </div>
-            <div><label for="heal">Heal</label><input class="skill" type="number" id="heal" value="0"></div>
-            <div><label for="intimidate">Intimidate</label><input class="skill" type="number" id="intimidate" value="0">
-            </div>
-            <div><label for="knowledge">Knowledge</label><input class="skill" type="number" id="knowledge" value="0">
-            </div>
-            <div><label for="linguistics">Linguistics</label><input class="skill" type="number" id="linguistics"
-                    value="0"></div>
-            <div><label for="perception">Perception</label><input class="skill" type="number" id="perception" value="0">
-            </div>
-            <div><label for="perform">Perform</label><input class="skill" type="number" id="perform" value="0"></div>
-            <div><label for="profession">Profession</label><input class="skill" type="number" id="profession" value="0">
-            </div>
-            <div><label for="ride">Ride</label><input class="skill" type="number" id="ride" value="0"></div>
-            <div><label for="senseMotive">Sense Motive</label><input class="skill" type="number" id="senseMotive"
-                    value="0"></div>
-            <div>
-                <label for="sleightOfHand">Sleight of Hand</label><input class="skill" type="number" id="sleightOfHand"
-                    value="0">
-            </div>
-            <div><label for="spellcraft">Spellcraft</label><input class="skill" type="number" id="spellcraft" value="0">
-            </div>
-            <div><label for="stealth">Stealth</label><input class="skill" type="number" id="stealth" value="0"></div>
-            <div><label for="survival">Survival</label><input class="skill" type="number" id="survival" value="0"></div>
-            <div><label for="swim">Swim</label><input class="skill" type="number" id="swim" value="0"></div>
-            <div>
-                <label for="useMagicDevice">Use Magic Device</label><input class="skill" type="number"
-                    id="useMagicDevice" value="0">
-            </div>
-        </form>
-        <button id="submitBtn">Submit Stats</button>
-    </div>
-
-    <form id="rollSelectForm">
-        <div>
-            <label for="rollFor">Select from the list what you are rolling for: </label>
-            <select id="rollFor" name="rollSelection">
-                <option value="attackDex">Attack(Dexterity)</option>
-                <option value="attackStr">Attack(Strength)</option>
-                <option value="damageDex">Damage(Dexterity)</option>
-                <option value="damageStr">Damage(Strength)</option>
-                <option value="concentrationCha">Concentration(Charisma)</option>
-                <option value="concentrationIntel">Concentration(Intelligence)</option>
-                <option value="concentrationWis">Concentration(Wisdom)</option>
-                <option value="fortitudeSave">Fortitude Save</option>
-                <option value="reflexSave">Reflex Save</option>
-                <option value="willSave">Will Save</option>
-                <option value="acrobatics">Acrobatics</option>
-                <option value="appraise">Appraise</option>
-                <option value="bluff">Bluff</option>
-                <option value="climb">Climb</option>
-                <option value="craft">Craft</option>
-                <option value="diplomacy">Diplomacy</option>
-                <option value="disabledevice">Disable Device</option>
-                <option value="disguise">Disguise</option>
-                <option value="escapeartist">Escape Artist</option>
-                <option value="fly">Fly</option>
-                <option value="handleanimal">Handle Animal</option>
-                <option value="heal">Heal</option>
-                <option value="intimidate">Intimidate</option>
-                <option value="knowledge">Knowledge</option>
-                <option value="linguistics">Linguistics</option>
-                <option value="perception">Perception</option>
-                <option value="perform">Perform</option>
-                <option value="profession">Profession</option>
-                <option value="ride">Ride</option>
-                <option value="sensemotive">Sense Motive</option>
-                <option value="sleightofhand">Slight of Hand</option>
-                <option value="spellcraft">Spellcraft</option>
-                <option value="stealth">Stealth</option>
-                <option value="survival">Survival</option>
-                <option value="swim">Swim</option>
-                <option value="usemagicdevice">Use Magic Device</option>
-            </select>
+            <h2>Please enter the combined total of ranks and trained for each skill. Leave blank if you don't use this
+                skill.</h2>
+            <form class="skillFormClass" id="skillForm" action="index.js">
+                <div><label for="acrobatics">Acrobatics</label><input class="skill" type="number" id="acrobatics"
+                        value="0">
+                </div>
+                <div><label for="appraise">Appraise</label><input class="skill" type="number" id="appraise" value="0">
+                </div>
+                <div><label for="bluff">Bluff</label><input class="skill" type="number" id="bluff" value="0"></div>
+                <div><label for="climb">Climb</label><input class="skill" type="number" id="climb" value="0"></div>
+                <div><label for="craft">Craft</label><input class="skill" type="number" id="craft" value="0"></div>
+                <div><label for="diplomacy">Diplomacy</label><input class="skill" type="number" id="diplomacy"
+                        value="0">
+                </div>
+                <div>
+                    <label for="disableDevice">Disable Device</label><input class="skill" type="number"
+                        id="disableDevice" value="0">
+                </div>
+                <div><label for="disguise">Disguise</label><input class="skill" type="number" id="disguise" value="0">
+                </div>
+                <div>
+                    <label for="escapeArtist">Escape Artist</label><input class="skill" type="number" id="escapeArtist"
+                        value="0">
+                </div>
+                <div><label for="fly">Fly</label><input class="skill" type="number" id="fly" value="0"></div>
+                <div>
+                    <label for="handleAnimal">Handle Animal</label><input class="skill" type="number" id="handleAnimal"
+                        value="0">
+                </div>
+                <div><label for="heal">Heal</label><input class="skill" type="number" id="heal" value="0"></div>
+                <div><label for="intimidate">Intimidate</label><input class="skill" type="number" id="intimidate"
+                        value="0">
+                </div>
+                <div><label for="knowledge">Knowledge</label><input class="skill" type="number" id="knowledge"
+                        value="0">
+                </div>
+                <div><label for="linguistics">Linguistics</label><input class="skill" type="number" id="linguistics"
+                        value="0"></div>
+                <div><label for="perception">Perception</label><input class="skill" type="number" id="perception"
+                        value="0">
+                </div>
+                <div><label for="perform">Perform</label><input class="skill" type="number" id="perform" value="0">
+                </div>
+                <div><label for="profession">Profession</label><input class="skill" type="number" id="profession"
+                        value="0">
+                </div>
+                <div><label for="ride">Ride</label><input class="skill" type="number" id="ride" value="0"></div>
+                <div><label for="senseMotive">Sense Motive</label><input class="skill" type="number" id="senseMotive"
+                        value="0"></div>
+                <div>
+                    <label for="sleightOfHand">Sleight of Hand</label><input class="skill" type="number"
+                        id="sleightOfHand" value="0">
+                </div>
+                <div><label for="spellcraft">Spellcraft</label><input class="skill" type="number" id="spellcraft"
+                        value="0">
+                </div>
+                <div><label for="stealth">Stealth</label><input class="skill" type="number" id="stealth" value="0">
+                </div>
+                <div><label for="survival">Survival</label><input class="skill" type="number" id="survival" value="0">
+                </div>
+                <div><label for="swim">Swim</label><input class="skill" type="number" id="swim" value="0"></div>
+                <div>
+                    <label for="useMagicDevice">Use Magic Device</label><input class="skill" type="number"
+                        id="useMagicDevice" value="0">
+                </div>
+            </form>
+            <button id="submitBtn">Submit Stats</button>
         </div>
-        <div>
-            <label for="diceRoll">Enter the dice you want to roll in the following format (2d6, 3d8, 1d4 etc.), use '+' between dice to combine different :
-            </label>
-            <input type="text" id="diceRoll" value="">
-        </div>
-    </form>
-    <button id="reset" class="hidden">Reset Character</button>
-    <button id="editCharacter" class="hidden">Edit Character</button>
-    <button id="rollBtn"><a href="#rollOutcome">Roll!</a></button>
-    <div>
-        <h2 id="rollOutcome"></h2>
+
+        <form id="rollSelectForm">
+            <div>
+                <label for="rollFor">Select from the list what you are rolling for: </label>
+                <select id="rollFor" name="rollSelection">
+                    <option value="attackDex">Attack(Dexterity)</option>
+                    <option value="attackStr">Attack(Strength)</option>
+                    <option value="damageDex">Damage(Dexterity)</option>
+                    <option value="damageStr">Damage(Strength)</option>
+                    <option value="concentrationCha">Concentration(Charisma)</option>
+                    <option value="concentrationIntel">Concentration(Intelligence)</option>
+                    <option value="concentrationWis">Concentration(Wisdom)</option>
+                    <option value="fortitudeSave">Fortitude Save</option>
+                    <option value="reflexSave">Reflex Save</option>
+                    <option value="willSave">Will Save</option>
+                    <option value="acrobatics">Acrobatics</option>
+                    <option value="appraise">Appraise</option>
+                    <option value="bluff">Bluff</option>
+                    <option value="climb">Climb</option>
+                    <option value="craft">Craft</option>
+                    <option value="diplomacy">Diplomacy</option>
+                    <option value="disabledevice">Disable Device</option>
+                    <option value="disguise">Disguise</option>
+                    <option value="escapeartist">Escape Artist</option>
+                    <option value="fly">Fly</option>
+                    <option value="handleanimal">Handle Animal</option>
+                    <option value="heal">Heal</option>
+                    <option value="intimidate">Intimidate</option>
+                    <option value="knowledge">Knowledge</option>
+                    <option value="linguistics">Linguistics</option>
+                    <option value="perception">Perception</option>
+                    <option value="perform">Perform</option>
+                    <option value="profession">Profession</option>
+                    <option value="ride">Ride</option>
+                    <option value="sensemotive">Sense Motive</option>
+                    <option value="sleightofhand">Slight of Hand</option>
+                    <option value="spellcraft">Spellcraft</option>
+                    <option value="stealth">Stealth</option>
+                    <option value="survival">Survival</option>
+                    <option value="swim">Swim</option>
+                    <option value="usemagicdevice">Use Magic Device</option>
+                </select>
+            </div>
+            <div>
+                <label for="diceRoll">Enter the dice you want to roll in the following format (2d6, 3d8, 1d4 etc.), use
+                    '+' between dice to combine different :
+                </label>
+                <input type="text" id="diceRoll" value="">
+            </div>
+        </form>
+        <button id="reset" class="hidden">Reset Character</button>
+        <button id="editCharacter" class="hidden">Edit Character</button>
+        <button id="rollBtn"><a href="#rollOutcome">Roll!</a></button>
+
+            <h2 id="rollOutcome"></h2>
+
     </div>
     <script src="JavaScript/index.js"></script>
 
