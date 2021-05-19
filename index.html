@@ -25,9 +25,13 @@
             <div><label for="Wisdom">Wisdom:</label> <input type="number" id="Wisdom" value="0"></div>
         </form>
 
-        <h2>Please enter your base attack bonus and your armour class below</h2>
+        <h2>Please enter your base attack bonus, caster level, saving throws (base+enhancement), armour penalty and your armour class below</h2>
         <form id="combatForm">
             <div><label for="bab">Base Attack Bonus</label><input type="number" id="bab" value="0"></div>
+            <div><label for="casterLevel">Caster Level</label><input type="number" id="casterLevel" value="0"></div>
+            <div><label for="baseSaveFort">Fortitude save</label><input type="number" id="baseSaveFort" value="0"></div>
+            <div><label for="baseSaveReflex">Reflex save</label><input type="number" id="baseSaveReflex" value="0"></div>
+            <div><label for="baseSaveWill">Will save</label><input type="number" id="baseSaveWill" value="0"></div>
             <div><label for="ac">Armour Class</label><input type="number" id="ac" value="0"></div>
             <div><label for="acPenalty">Armour Pentalty</label><input type="number" id="acPenalty" value="0"></div>
         </form>
@@ -97,6 +101,12 @@
                 <option value="attackStr">Attack(Strength)</option>
                 <option value="damageDex">Damage(Dexterity)</option>
                 <option value="damageStr">Damage(Strength)</option>
+                <option value="concentrationCha">Concentration(Charisma)</option>
+                <option value="concentrationIntel">Concentration(Intelligence)</option>
+                <option value="concentrationWis">Concentration(Wisdom)</option>
+                <option value="fortitudeSave">Fortitude Save</option>
+                <option value="reflexSave">Reflex Save</option>
+                <option value="willSave">Will Save</option>
                 <option value="acrobatics">Acrobatics</option>
                 <option value="appraise">Appraise</option>
                 <option value="bluff">Bluff</option>
@@ -126,7 +136,7 @@
             </select>
         </div>
         <div>
-            <label for="diceRoll">Enter the dice you want to roll in the following format (2d6, 3d8, 1d4 etc.) :
+            <label for="diceRoll">Enter the dice you want to roll in the following format (2d6, 3d8, 1d4 etc.), use '+' between dice to combine different :
             </label>
             <input type="text" id="diceRoll" value="">
         </div>

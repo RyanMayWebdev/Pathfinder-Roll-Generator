@@ -29,6 +29,8 @@ button {
     font-size: 2rem;
     margin-bottom: 35px;
     padding: 15px;
+    width: max-content;
+    height: min-content;
 }
 
 
@@ -40,13 +42,11 @@ form {
     align-items: center;
     justify-content: space-evenly;
     font-size: 1.5rem;
-    text-align: left;
 }
 
 form div {
     display: flex;
     justify-content: space-between;
-    text-align: left;
     width: 300px;
 }
 
@@ -81,7 +81,7 @@ label, input, option, select  {
 
 
 .mainHeader {
-    background-color: #91091e;
+    background-image: linear-gradient(45deg, #5c020f, #91091e, #5c020f);
     box-shadow: 0 0 10px black;
     height:fit-content;
     padding: 25px 0;
@@ -97,9 +97,11 @@ label, input, option, select  {
 .visible {
     display:inline-block;
 }
+
 .hidden {
     display:none;
 }
+
 #initialCharacterStats {
     padding: 150px, 25px;
 }
@@ -109,7 +111,7 @@ label, input, option, select  {
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 250px;
+    height: 300px;
     margin: 20px 0;
     width: 375px;
 }
@@ -121,6 +123,10 @@ label, input, option, select  {
 #rollSelectForm input {
     height: 50px;
     width: 75px;
+}
+
+#rollSelectForm #diceRoll {
+    width:fit-content;
 }
 
 
