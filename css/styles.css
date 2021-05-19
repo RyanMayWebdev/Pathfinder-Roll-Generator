@@ -1,42 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Goblin+One&family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
 
 body {
-    background-image:url(https://wallpaperaccess.com/full/2796640.jpg);
+    background-image:url(../images/wood.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Nothing You Could Do', cursive;
     font-weight: 400;
     margin: 0px;
     scroll-behavior: smooth;
-    -webkit-text-stroke-color: #5c020f;
-    -webkit-text-stroke-width: 1.5px;
-    -webkit-text-fill-color: #ffb237;
+    -webkit-text-stroke-color: #000000;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-fill-color: #b16d00;
     text-align: center;
     text-decoration: none;
 }
 
 a , a:visited {
     -webkit-text-stroke-color: #5c020f;
-    -webkit-text-stroke-width: 1.5px;
-    -webkit-text-fill-color: #ffb237;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-fill-color: #ffb031;
     text-decoration: none;
 }
 button {
     background-image: linear-gradient(45deg, #5c020f, #91091e, #5c020f);
     box-shadow: 2px 2px 10px black;
     border-radius: 15px;
-    font-family: 'MedievalSharp', cursive;
-    font-size: 2rem;
-    margin-bottom: 35px;
+    font-family: 'Nothing You Could Do', cursive;
+    font-size: 3em;
+    margin: 0 20px 35px;
     padding: 15px;
     width: max-content;
     height: min-content;
+    -webkit-text-stroke-color: #5c020f;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-fill-color: #ffb031;
 }
 
 
 form {
     display: flex;
-    width: 70%;
     margin: 50px auto;
     flex-wrap: wrap;
     align-items: center;
@@ -46,20 +48,23 @@ form {
 
 form div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    width: 300px;
+    width: 310px;
+    text-align: left;
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family: 'Goblin One', cursive;
+    font-weight: 400;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin: 0 auto;
     padding: 75px 25px 25px;
 }
 
@@ -68,17 +73,33 @@ input {
     width: 55px;
 }
 
+input,select,option {
+    background-color: antiquewhite;
+}
+
 label, input, option, select  {
-    font-family: 'MedievalSharp', cursive;
+    font-family: 'Nothing You Could Do', cursive;
     font-size: 1.8rem;
     padding: 5px;
     margin: 5px;
+}
+
+select {
+    width:375px;
 }
 
 .buttonPressed {
     opacity:0.7;
 }
 
+.contentBackground {
+    background-image:url(../images/paper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 50px #000;
+    margin: 50px auto;
+    width:80%;
+}
 
 .mainHeader {
     background-image: linear-gradient(45deg, #5c020f, #91091e, #5c020f);
@@ -87,6 +108,9 @@ label, input, option, select  {
     padding: 25px 0;
     margin: auto;
     width: 100%;
+    -webkit-text-stroke-color: #5c020f;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-fill-color: #ffb031;
 }
 
 .mainSubHeader {
@@ -107,12 +131,10 @@ label, input, option, select  {
 }
 
 #rollSelectForm div {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex-wrap: wrap;
     height: 300px;
     margin: 20px 0;
+    text-align: center;
     width: 375px;
 }
 
@@ -126,17 +148,35 @@ label, input, option, select  {
 }
 
 #rollSelectForm #diceRoll {
-    width:fit-content;
+    width:300px;
 }
 
+#rollOutcome {
+    height: 150px;
+    margin: 0 10px;
+    padding: 25px 0;
+}
 
-@media (max-width:424px){
+@media (max-width:767px){
     h1 {
         font-size: 2em;
     }
 
     h2 {
-        font-size: 1.6em;
+        font-size: 1.4em;
+    }
+
+    button{
+        font-size: 2em;
+        margin: 0 5px 35px;
+        max-width: 310px;
+    }
+    select {
+        font-size: 1em;
+        width: 310px;
     }
     
+    .contentBackground {
+        width: 100vw;
+    }
 }
