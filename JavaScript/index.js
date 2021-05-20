@@ -236,7 +236,7 @@ function rollGenerator() {
         i++
     }
     finalRoll += atrValue[atrUsed];
-    let diceAudio = new Audio("audio/diceroll.mp3");
+    let diceAudio = new Audio("../audio/diceroll.mp3");
     diceAudio.play();
     // roll outcome logic statments, using 1.5 second delay to allow diceRoll audio to play  before displaying result.
     setTimeout(() => {
