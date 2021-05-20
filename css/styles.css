@@ -177,6 +177,7 @@ select {
     }
     
     .contentBackground {
+        background-repeat: repeat;
         width: 100vw;
     }
 }
