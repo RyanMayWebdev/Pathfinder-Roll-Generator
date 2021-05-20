@@ -178,7 +178,6 @@ select {
     }
     
     .contentBackground {
-        background-size: auto;
         width: 100vw;
     }
 }
