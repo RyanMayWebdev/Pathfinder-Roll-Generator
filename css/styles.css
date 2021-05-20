@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap');
 
 body {
-    background-image:url(/images/wood.jpg);
+    background-image:url(../images/wood.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Nothing You Could Do', cursive;
@@ -93,7 +93,7 @@ select {
 }
 
 .contentBackground {
-    background-image:url(/images/paper.jpg);
+    background-image:url(../images/paper.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 0 50px #000;
