@@ -96,6 +96,7 @@ select {
     background-image:url(../images/paper.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     box-shadow: 0 0 50px #000;
     margin: 50px auto;
     width:80%;
@@ -177,6 +178,7 @@ select {
     }
     
     .contentBackground {
+        background-size: auto;
         width: 100vw;
     }
 }
