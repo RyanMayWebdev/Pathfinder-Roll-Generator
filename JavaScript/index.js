@@ -141,6 +141,7 @@ function editSkills() {
 function rollGenerator() {
     // collect dice input from each input field the user adds. then get how many dice of each type are rolled and assign the diceSides and numberOfDice
     let userDiceInput = document.getElementById("diceRoll").value;
+    userDiceInput = userDiceInput.toLowerCase();
     let numberOfDiffDice = userDiceInput.split('+').length; //Checks if the user is combining different dice types and how many
     let d = []; // an array to hold the indexOf the character 'd'
     let seperateDice; // variable that will contain the indexOf '+', used to seperate the different dice being used
@@ -148,7 +149,7 @@ function rollGenerator() {
     let diceSides = []; //array to hold the number of sides per dice type being rolled
     for (let x = 0; x < numberOfDiffDice; x++) { 
         seperateDice = userDiceInput.indexOf('+'); // checks for '+' within the input and if so grabs its location
-        d.push(userDiceInput.indexOf('d' || 'D')); // checks for location of 'd', used to determine when numberofsides should be collected
+        d.push(userDiceInput.indexOf('d')); // checks for location of 'd', used to determine when numberofsides should be collected
         numberOfDice.push(parseInt(userDiceInput.slice(0, d[x]))); //grabs whatever proceeds 'd' to be used as the number of dice
         if (seperateDice > 0) {  //logic check to see if there is more than 1 type of dice being used.
             diceSides.push(parseInt(userDiceInput.slice(d[x] + 1, seperateDice)));
